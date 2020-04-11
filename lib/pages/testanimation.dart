@@ -10,10 +10,10 @@ import 'package:thread/helper/routes.dart';
 
 class TestPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => DashboardState();
+  State<StatefulWidget> createState() => TestPageState();
 }
 
-class DashboardState extends State<TestPage> with TickerProviderStateMixin {
+class TestPageState extends State<TestPage> with TickerProviderStateMixin {
   bool _isLoading = true;
   double appwidth;
   double appheight;

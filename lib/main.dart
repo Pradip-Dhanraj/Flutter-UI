@@ -8,25 +8,6 @@ import 'package:thread/helper/theme.dart';
 import 'package:thread/helper/strings.dart';
 import 'package:thread/pages/testanimation.dart';
 
-// void main() => runApp(MaterialApp(
-//       title: ApplicationTexts.appTitle,
-//       theme: appTheme,
-//       debugShowCheckedModeBanner: false,
-//       initialRoute: ApllicationRoutes.routeToTestPage,
-//       routes: {
-//         ApllicationRoutes.routeToLogin: (context) => Login(),
-//         ApllicationRoutes.routeToDashboard: (context) => Dashboard(),
-//         ApllicationRoutes.routeToTestPage: (context) => TestPage(),
-//         // AppConstant.routeToDashboard: (context) => Dashboard(),
-//         // AppConstant.routeToLogin: (context) => LoginPage(),
-//         // AppConstant.routeToMap: (context) => MapSample(),
-//         // AppConstant.routeToSplashScreen: (context) => SplashScreen(
-//         //     'assets/splash.flr', Login(),
-//         //     startAnimation: 'Untitled',
-//         //     backgroundColor: Theme.of(context).primaryColor),
-//       },
-//     ));
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
@@ -45,8 +26,6 @@ Future<void> main() async {
         ApllicationRoutes.routeToCamera: (context) => TakePictureScreen(
               camera: firstCamera,
             ),
-        // AppConstant.routeToLogin: (context) => LoginPage(),
-        // AppConstant.routeToMap: (context) => MapSample(),
         // AppConstant.routeToSplashScreen: (context) => SplashScreen(
         //     'assets/splash.flr', Login(),
         //     startAnimation: 'Untitled',
