@@ -1,7 +1,30 @@
 import 'package:thread/models/blogmodel.dart';
 import 'package:thread/models/categoryinfo.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
 
-class GetRecentBanner {
+import 'package:thread/models/profile.dart';
+
+class AppServices {
+  static Future<String> _getJsonProfileData() async {
+    return await rootBundle.loadString('assets/jsons/profiledata.json');
+  }
+
+  static Future<ProfileModel> getProfileData() async {
+    await Future.delayed(Duration(seconds: 5)); //Mock delay
+    var jsonString = await _getJsonProfileData();
+    final jsonResponse = json.decode(jsonString);
+    ProfileModel profileModel = new ProfileModel.fromJson(jsonResponse);
+    return profileModel;
+  }
+//  static Future<ProfileModel> getProfileDataz() async {
+//     var jsonString = await _getJsonProfileData();
+//     final jsonResponse = json.decode(jsonString).cast<Map<String, dynamic>>();
+//     ProfileModel profileModel = jsonResponse.map<ProfileModel>((json)=>{ProfileModel.fromJson(json)});
+//     return profileModel;
+//   }
+
   static List<BlogModel> recetblogslist = [
     BlogModel(title: "Qurantine day 1", createddate: "10/5/2020"),
     BlogModel(title: "Qurantine day 1", createddate: "10/5/2020"),

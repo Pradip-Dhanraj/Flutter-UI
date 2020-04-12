@@ -6,7 +6,6 @@ import 'package:thread/pages/login.dart';
 import 'package:thread/helper/routes.dart';
 import 'package:thread/helper/theme.dart';
 import 'package:thread/helper/strings.dart';
-import 'package:thread/pages/testanimation.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +21,7 @@ Future<void> main() async {
       routes: {
         ApllicationRoutes.routeToLogin: (context) => Login(),
         ApllicationRoutes.routeToDashboard: (context) => Dashboard(),
-        ApllicationRoutes.routeToTestPage: (context) => TestPage(),
+        //ApllicationRoutes.routeToTestPage: (context) => TestPage(),
         ApllicationRoutes.routeToCamera: (context) => TakePictureScreen(
               camera: firstCamera,
             ),
