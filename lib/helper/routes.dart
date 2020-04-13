@@ -7,6 +7,8 @@ class ApllicationRoutes {
   static const routeToLogin = "/login";
   static const routeToTestPage = "/test";
   static const routeToCamera = "/camera";
+
+  static var routeToCreateBlog = "/createblog";
 }
 
 // void routeToPage(BuildContext context, String path) {

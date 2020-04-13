@@ -34,7 +34,6 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
       curve: Curves.easeIn,
     );
     profilestream = Stream.fromFuture(AppServices.getProfileData());
-    //print('${data.first}');
     fadecontroller.forward();
     super.initState();
   }
@@ -57,41 +56,41 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   }
 
   Widget getRecentBlogs() {
-    //var list = AppServices.recetblogslist;
-    return StreamBuilder(
-      stream: profilestream,
-      initialData: null,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 100,
-                color: Colors.blue,
-                child: Text(snapshot.data[index].title),
-              );
-            },
-            scrollDirection: Axis.horizontal,
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
-    );
-    // ListView.builder(
-    //   itemCount: list.length,
-    //   itemBuilder: (BuildContext context, int index) {
-    //     return Container(
-    //       height: 100,
-    //       color: Colors.blue,
-    //       child: Text(list[index]?.title),
-    //     );
+    // return StreamBuilder(
+    //   stream: profilestream,
+    //   initialData: null,
+    //   builder: (context, snapshot) {
+    //     if (snapshot.hasData) {
+    //       return ListView.builder(
+    //         itemCount: snapshot.data.length,
+    //         itemBuilder: (BuildContext context, int index) {
+    //           return Container(
+    //             height: 100,
+    //             color: Colors.blue,
+    //             child: Text(snapshot.data[index].title),
+    //           );
+    //         },
+    //         scrollDirection: Axis.horizontal,
+    //       );
+    //     } else {
+    //       return Center(
+    //         child: CircularProgressIndicator(),
+    //       );
+    //     }
     //   },
-    //   scrollDirection: Axis.horizontal,
     // );
+    var list = AppServices.recetblogslist;
+    ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 100,
+          color: Colors.blue,
+          child: Text(list[index]?.title),
+        );
+      },
+      scrollDirection: Axis.horizontal,
+    );
   }
 
   Widget blogTemplate() {
