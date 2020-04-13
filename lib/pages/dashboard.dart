@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:thread/customwidgets/circularwidget.dart';
 import 'package:thread/helper/helper.dart';
 import 'package:thread/helper/theme.dart';
 import 'package:thread/models/categoryinfo.dart';
+import 'package:thread/models/profile.dart';
 import 'package:thread/services/getservice.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:thread/helper/routes.dart';
@@ -21,7 +23,7 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   double bodyheight;
   AnimationController fadecontroller;
   Animation fadeanimation;
-
+  Stream<ProfileModel> profilestream;
   @override
   void initState() {
     _isLoading = false;
@@ -31,6 +33,7 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
       parent: fadecontroller,
       curve: Curves.easeIn,
     );
+    profilestream = Stream.fromFuture(AppServices.getProfileData());
     fadecontroller.forward();
     super.initState();
   }
@@ -53,8 +56,31 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   }
 
   Widget getRecentBlogs() {
-    var list = GetRecentBanner.recetblogslist;
-    return ListView.builder(
+    // return StreamBuilder(
+    //   stream: profilestream,
+    //   initialData: null,
+    //   builder: (context, snapshot) {
+    //     if (snapshot.hasData) {
+    //       return ListView.builder(
+    //         itemCount: snapshot.data.length,
+    //         itemBuilder: (BuildContext context, int index) {
+    //           return Container(
+    //             height: 100,
+    //             color: Colors.blue,
+    //             child: Text(snapshot.data[index].title),
+    //           );
+    //         },
+    //         scrollDirection: Axis.horizontal,
+    //       );
+    //     } else {
+    //       return Center(
+    //         child: CircularProgressIndicator(),
+    //       );
+    //     }
+    //   },
+    // );
+    var list = AppServices.recetblogslist;
+    ListView.builder(
       itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
@@ -251,9 +277,9 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                                             MainAxisAlignment.spaceEvenly,
                                         children: <Widget>[
                                           _getCategoryStatus(
-                                              GetRecentBanner.categoryInfo[0]),
+                                              AppServices.categoryInfo[0]),
                                           _getCategoryStatus(
-                                              GetRecentBanner.categoryInfo[1]),
+                                              AppServices.categoryInfo[1]),
                                         ],
                                       ),
                                       Row(
@@ -261,9 +287,9 @@ class DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                                             MainAxisAlignment.spaceEvenly,
                                         children: <Widget>[
                                           _getCategoryStatus(
-                                              GetRecentBanner.categoryInfo[2]),
+                                              AppServices.categoryInfo[2]),
                                           _getCategoryStatus(
-                                              GetRecentBanner.categoryInfo[3]),
+                                              AppServices.categoryInfo[3]),
                                         ],
                                       ),
                                     ],
