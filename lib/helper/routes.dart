@@ -9,6 +9,7 @@ class ApllicationRoutes {
   static const routeToCamera = "/camera";
 
   static var routeToCreateBlog = "/createblog";
+  static var routeToThread = "/thread";
 }
 
 // void routeToPage(BuildContext context, String path) {

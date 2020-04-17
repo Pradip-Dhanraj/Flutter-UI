@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thread/customwidgets/delayedanimation.dart';
 import 'package:thread/helper/helper.dart';
 import 'package:thread/helper/routes.dart';
 
@@ -35,8 +36,6 @@ class LoginState extends State<Login> {
   @override
   void initState() {
     isLoggedIn = false;
-    //usernameController.addListener(_printLatestValue);
-    //passwordController.addListener(_printLatestValue);
     super.initState();
   }
 
@@ -90,10 +89,6 @@ class LoginState extends State<Login> {
       print("Second text field: $password");
       _showSnackbar("Logged in..!!");
       setState(() {
-        _isLoading = false;
-        //usernameController.text = "";
-        //passwordController.text = "";
-        //routeToDashboard(context,);
         routeToPage(
           action: NaivigationRoute.dashboard,
           context: context,
@@ -291,28 +286,13 @@ class LoginState extends State<Login> {
             padding: EdgeInsets.all(20),
             child: !_isLoading
                 ? SingleChildScrollView(
-                    child: _getLoginLayout(context),
+                    child: Delayedaimation(
+                        milliseconsdelay: 800, child: _getLoginLayout(context)),
                   )
                 : getLoaderLayout(),
           ),
         ),
       ),
-
-      //  Stack(
-      //   fit: StackFit.expand,
-      //   children: <Widget>[
-      //     Image.asset(
-      //       _assetImage,
-      //       fit: BoxFit.cover,
-      //     ),
-      //     Center(
-      //       child: Padding(
-      //         padding: EdgeInsets.all(20),
-      //         child: !_isLoading ? _getLoginLayout(context) : getLoaderLayout(),
-      //       ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

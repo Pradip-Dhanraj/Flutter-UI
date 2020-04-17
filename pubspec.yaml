@@ -50,6 +50,7 @@ flutter:
    - assets/jsons/profiledata.json
    - assets/jsons/recentblogs.json
    - assets/jsons/categoryinfo.json
+   - smile.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
