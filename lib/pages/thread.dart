@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:thread/customwidgets/delayedanimation.dart';
+import 'package:thread/customwidgets/rotationanimation.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 const Color blueshade01 = const Color(0xff2B4F81);
@@ -54,7 +56,10 @@ class _ThreadState extends State<Thread> {
                             sidebarTextColor: s3SidebarTextColor,
                             sidebarText: "C. Ronaldo",
                           ),
-                          getNavbar(),
+                          Delayedaimation(
+                            milliseconsdelay: 600,
+                            child: getNavbar(),
+                          ),
                         ],
                       ),
                       getContainerLayout(
@@ -68,7 +73,7 @@ class _ThreadState extends State<Thread> {
                             Icons.data_usage,
                             color: Colors.white54,
                           ),
-                          opacity: .9),
+                          opacity: .95),
                     ],
                   ),
                 ],
@@ -93,21 +98,88 @@ class _ThreadState extends State<Thread> {
   }
 }
 
+class Statistics {
+  int total;
+  int score;
+  String title;
+  Statistics(
+      {@required this.title, @required this.score, @required this.total});
+}
+
 Widget getStatisticsLayout() {
   var lst = [
-    "one",
-    "two",
-    "three",
-    "four",
+    Statistics(score: 19, total: 33, title: "Possesion"),
+    Statistics(score: 19, total: 33, title: "Pass Completion"),
+    Statistics(score: 19, total: 33, title: "Shot on"),
+    Statistics(score: 19, total: 33, title: "Goals"),
   ].toList();
   return Container(
+    alignment: Alignment.topCenter,
     child: ListView.builder(
       itemCount: lst.length,
       itemBuilder: (BuildContext context, int index) {
-        return Row(
-          children: <Widget>[
-            Text("${lst[index]}"),
-          ],
+        return Container(
+          alignment: Alignment.center,
+          height: 50,
+          padding: EdgeInsets.only(
+            right: 5,
+          ),
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Container(
+                width: appwidth / 5,
+                child: Text(
+                  "${((lst[index].score/lst[index].total)*100).round()}%",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: s3TextColor,
+                    fontSize: 28,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "${lst[index].title.toUpperCase()}",
+                        style: TextStyle(
+                          color: const Color(0xff40608f),
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 5,
+                        ),
+                        child: LinearProgressIndicator(
+                          value: 20,
+                          backgroundColor: Colors.red,
+                          valueColor:
+                              new AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: appwidth / 5,
+                child: Text(
+                  "${(-((lst[index].score/lst[index].total)*100) + 100).round()}%",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xff1f2f46),
+                    fontSize: 28,
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     ),
@@ -138,21 +210,34 @@ Widget getContainerLayout({
             quarterTurns: -1,
             child: Row(
               children: <Widget>[
-                Text(
-                  sidebarText.toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: sidebarTextColor,
+                Delayedaimation(
+                  milliseconsdelay: 1000,
+                  child: Text(
+                    sidebarText.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: sidebarTextColor,
+                    ),
                   ),
                 ),
                 Spacer(),
-                sidebarIcon == null ? Container() : sidebarIcon,
+                sidebarIcon == null
+                    ? Container()
+                    : Delayedaimation(
+                        milliseconsdelay: 1000,
+                        child: RotationAnimation(
+                          child: sidebarIcon,
+                          degree: 360,
+                        ),
+                      ),
               ],
             ),
           ),
         ),
         Container(
-          child: Expanded(child: child),
+          child: Expanded(
+            child: child,
+          ),
         ),
       ],
     ),
@@ -164,12 +249,14 @@ Widget getNavbar() {
     child: Row(
       children: <Widget>[
         Container(
-          width: 70,
-          child: Icon(
-            Icons.data_usage,
-            color: textcolor,
-          ),
-        ),
+            width: 70,
+            child: RotationAnimation(
+              degree: 360,
+              child: Icon(
+                Icons.data_usage,
+                color: textcolor,
+              ),
+            )),
         Spacer(),
         Container(
           width: 70,
