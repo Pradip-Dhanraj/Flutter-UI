@@ -1,0 +1,25 @@
+[
+    {
+        "title": "Profile",
+        "total": 100,
+        "completed": 70
+    },
+    {
+        "title": "Blogs",
+        "total": 0,
+        "completed": 4,
+        "message": "4 active"
+    },
+    {
+        "title": "Pictures",
+        "total": 0,
+        "completed": 17,
+        "message": "17 posts"
+    },
+    {
+        "title": "Notification",
+        "total": 0,
+        "completed": 13,
+        "message": "10+"
+    }
+]
