@@ -67,7 +67,7 @@ class _ThreadState extends State<Thread> {
                           child: Delayedaimation(
                             milliseconsdelay: 800,
                             transition: const Offset(0.35, 0.0),
-                            child: CarouselPage(),
+                            child: getCarouselPage(),
                           ),
                           height: (appheight / 3),
                           backgroundcolor: blueshade02,
@@ -101,6 +101,38 @@ class _ThreadState extends State<Thread> {
       ),
     );
   }
+}
+
+Widget getCarouselPage() {
+  var lst = [
+    "Pradip Dhanraj",
+    "Flutter Developer",
+    "Xamarin Developer",
+    "Johnson Controls",
+  ];
+  return CarouselPage(
+    itemsSource: lst,
+    templateFunction: (Object obj) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$obj',
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: Colors.white54,
+            ),
+          ),
+          Text('$obj',
+              style: TextStyle(
+                color: Colors.white54,
+              )),
+        ],
+      );
+    },
+  );
 }
 
 class Statistics {
