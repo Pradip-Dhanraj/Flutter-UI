@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:thread/customwidgets/carouselpage.dart';
 import 'package:thread/customwidgets/delayedanimation.dart';
 import 'package:thread/customwidgets/rotationanimation.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -63,7 +64,11 @@ class _ThreadState extends State<Thread> {
                         ],
                       ),
                       getContainerLayout(
-                          child: Container(),
+                          child: Delayedaimation(
+                            milliseconsdelay: 800,
+                            transition: const Offset(0.35, 0.0),
+                            child: CarouselPage(),
+                          ),
                           height: (appheight / 3),
                           backgroundcolor: blueshade02,
                           sideBarColor: s2SidebarColor,
@@ -131,7 +136,7 @@ Widget getStatisticsLayout() {
               Container(
                 width: appwidth / 5,
                 child: Text(
-                  "${((lst[index].score/lst[index].total)*100).round()}%",
+                  "${((lst[index].score / lst[index].total) * 100).round()}%",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: s3TextColor,
@@ -170,7 +175,7 @@ Widget getStatisticsLayout() {
                 alignment: Alignment.center,
                 width: appwidth / 5,
                 child: Text(
-                  "${(-((lst[index].score/lst[index].total)*100) + 100).round()}%",
+                  "${(-((lst[index].score / lst[index].total) * 100) + 100).round()}%",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xff1f2f46),
