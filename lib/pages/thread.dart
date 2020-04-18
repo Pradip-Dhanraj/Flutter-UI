@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:thread/customwidgets/carouselpage.dart';
 import 'package:thread/customwidgets/delayedanimation.dart';
+import 'package:thread/customwidgets/linearindicator.dart';
 import 'package:thread/customwidgets/rotationanimation.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -146,9 +147,9 @@ class Statistics {
 Widget getStatisticsLayout() {
   var lst = [
     Statistics(score: 19, total: 33, title: "Possesion"),
-    Statistics(score: 19, total: 33, title: "Pass Completion"),
-    Statistics(score: 19, total: 33, title: "Shot on"),
-    Statistics(score: 19, total: 33, title: "Goals"),
+    Statistics(score: 40, total: 189, title: "Pass Completion"),
+    Statistics(score: 10, total: 156, title: "Shot on"),
+    Statistics(score: 5, total: 41, title: "Goals"),
   ].toList();
   return Container(
     alignment: Alignment.topCenter,
@@ -192,11 +193,9 @@ Widget getStatisticsLayout() {
                         padding: EdgeInsets.symmetric(
                           vertical: 5,
                         ),
-                        child: LinearProgressIndicator(
-                          value: 20,
-                          backgroundColor: Colors.red,
-                          valueColor:
-                              new AlwaysStoppedAnimation<Color>(Colors.blue),
+                        child: LinearIndicator(
+                          total: double.parse('${lst[index].total}'),
+                          value: double.parse('${lst[index].score}'),
                         ),
                       )
                     ],
