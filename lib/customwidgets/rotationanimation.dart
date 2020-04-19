@@ -9,12 +9,14 @@ class RotationAnimation extends StatefulWidget {
   final RotationDirection direction;
   final int duration;
   final Widget child;
+  final Function function;
 
   const RotationAnimation({
     @required this.child,
     this.degree = 180,
     this.direction = RotationDirection.left,
     this.duration = 500,
+    this.function,
   });
   @override
   _RotationAnimationState createState() => _RotationAnimationState();
@@ -59,7 +61,11 @@ class _RotationAnimationState extends State<RotationAnimation>
                 } else if (controller.status == AnimationStatus.dismissed) {
                   controller.forward();
                 }
-                print("Icon tapped");
+
+                if (widget.function != null)
+                  widget.function();
+                else
+                  print("Icon tapped");
               },
               child: widget.child,
             ),

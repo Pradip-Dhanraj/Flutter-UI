@@ -5,11 +5,13 @@ class Delayedaimation extends StatefulWidget {
   final Widget child;
   final int milliseconsdelay;
   final Offset transition;
+  final Duration animationduration;
 
   Delayedaimation({
     @required this.milliseconsdelay,
     @required this.child,
     this.transition = const Offset(0.0, 0.35),
+    this.animationduration = const Duration(milliseconds: 800) ,
   });
 
   @override
@@ -25,7 +27,7 @@ class _DelayedaimationState extends State<Delayedaimation>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 800),
+      duration: widget.animationduration,
     );
 
     var fade = CurvedAnimation(curve: Curves.decelerate, parent: _controller);
