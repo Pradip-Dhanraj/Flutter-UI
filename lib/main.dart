@@ -20,7 +20,7 @@ Future<void> main() async {
       title: ApplicationTexts.appTitle,
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      initialRoute: ApllicationRoutes.routeToThread,
+      initialRoute: ApllicationRoutes.routeToCreateBlog,
       routes: {
         ApllicationRoutes.routeToLogin: (context) => Login(),
         ApllicationRoutes.routeToDashboard: (context) => Dashboard(),
