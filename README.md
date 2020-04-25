@@ -1,6 +1,6 @@
 # thread
 
-A new Flutter project.
+Copy of dev branch with local database sql crude operation.
 
 ## Getting Started
 
