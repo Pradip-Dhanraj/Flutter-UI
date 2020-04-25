@@ -1,6 +1,9 @@
 # thread
 
-A new Flutter project.
+3 pages are included
+    1. Login page
+    2. Animated User details page
+    3. UI page for practice.  
 
 ## Getting Started
 
